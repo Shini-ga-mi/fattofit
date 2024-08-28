@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <h2>Admin Panel</h2>
+    <form method="POST">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <h3>Add Exercise</h3>
+        <label for="exercise">Exercise:</label><br>
+        <input type="text" id="exercise" name="exercise"><br>
+        <label for="sets">Sets:</label><br>
+        <input type="number" id="sets" name="sets"><br>
+        <label for="reps">Reps:</label><br>
+        <input type="number" id="reps" name="reps"><br>
+        <label for="rest_time">Rest Time (secs):</label><br>
+        <input type="number" id="rest_time" name="rest_time"><br><br>
+
+        <h3>Add Diet Plan</h3>
+        <label for="diet">Diet:</label><br>
+        <input type="text" id="diet" name="diet"><br>
+        <label for="calories">Calories:</label><br>
+        <input type="number" id="calories" name="calories"><br><br>
+
+        <input type="submit" value="Add Data">
+    </form>
+
+    <h3>Current Users</h3>
+    {% for username, data in users.items() %}
+        <h4>{{ username }}</h4>
+        <p>Workouts: {{ data.workouts }}</p>
+        <p>Diet Plan: {{ data.diets }}</p>
+    {% endfor %}
+</body>
+</html>

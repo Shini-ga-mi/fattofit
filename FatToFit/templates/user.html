@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+
+</head>
+<body>
+    <h2>Welcome, {{ user.name }}</h2>
+    
+    <h3>Your Workouts</h3>
+    <ul>
+        {% for workout in user.workouts %}
+        <li>{{ workout.exercise }} - {{ workout.sets }} sets of {{ workout.reps }} reps (Rest: {{ workout.rest_time }} secs)</li>
+        {% endfor %}
+    </ul>
+    
+    <h3>Your Diet Plan</h3>
+    <ul>
+        {% for diet in user.diets %}
+        <li>{{ diet.diet }} - {{ diet.calories }} calories</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
