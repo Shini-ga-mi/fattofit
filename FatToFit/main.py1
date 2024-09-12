@@ -90,6 +90,20 @@ def user_dashboard():
     username = session['username']
     user_data = users.get(username)
     return render_template('user.html', user=user_data)
+from flask import Flask, render_template, url_for
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        # Register user logic here
+        return redirect(url_for('profile'))
+    return render_template('register.html')
 
 @app.route('/profile')
 def profile():
@@ -110,6 +124,8 @@ def workout():
 def nav():
     return render_template('nav.html')
 
+if __name__ == '__main__':
+    app.run(debug=True)
 @app.route('/logout')
 def logout():
     session.pop('username', None)

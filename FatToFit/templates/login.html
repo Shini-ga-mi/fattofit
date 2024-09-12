@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-
-</head>
-<body>
-    <h2>Login</h2>
-    <form method="POST">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
-        <input type="submit" value="Login">
+  <head>
+    <title>Login</title><link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <style>
+    button[type="button"] {
+      background-color: #4CAF50;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    button[type="button"]:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+  <body>
+    <h1>Login</h1>
+    <form action="" method="post">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username"><br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br><br>
+      <input type="submit" value="Login">
     </form>
-</body>
+    <!-- Add a button to redirect to the registration page -->
+    <p>Don't have an account? <a href="/register"><button type="button">Register</button></a></p>
+  </body>
 </html>
