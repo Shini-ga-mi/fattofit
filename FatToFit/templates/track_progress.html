@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Progress</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('user_dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('diet_plan') }}">Diet Plan</a></li>
+                <li><a href="{{ url_for('workout') }}">Workout Plan</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+   <!-- ... existing code ... -->
+
+<main>
+    <h1>Track Progress</h1>
+    <h2>Diet Progress</h2>
+    <ul>
+        {% for diet in user.diets %}
+        <li>
+            Diet: {{ diet.diet }} ({{ diet.calories }} calories)
+            <progress value="{{ diet.progress }}" max="100"></progress>
+            {{ diet.progress }}%
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Add a form to input diet progress -->
+    <form action="" method="post">
+        <label for="diet_progress">Enter diet progress (0-100):</label>
+        <input type="number" id="diet_progress" name="diet_progress" min="0" max="100">
+        <button type="submit">Update Diet Progress</button>
+    </form>
+
+    <h2>Workout Progress</h2>
+    <ul>
+        {% for workout in user.workouts %}
+        <li>
+            Exercise: {{ workout.exercise }} ({{ workout.sets }} sets, {{ workout.reps }} reps, {{ workout.rest_time }} rest time)
+            <progress value="{{ workout.progress }}" max="100"></progress>
+            {{ workout.progress }}%
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Add a form to input workout progress -->
+    <form action="" method="post">
+        <label for="workout_progress">Enter workout progress (0-100):</label>
+        <input type="number" id="workout_progress" name="workout_progress" min="0" max="100">
+        <button type="submit">Update Workout Progress</button>
+    </form>
+</main>
+</body>
+</html>

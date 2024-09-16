@@ -1,176 +1,163 @@
 /* Global styles */
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-    color: #222;
-    margin-bottom: 10px;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  li {
-    margin-bottom: 10px;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #337ab7;
-  }
-  
-  a:hover {
-    color: #23527c;
-  }
-  
-  /* Navigation styles */
-  
-  nav {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  nav ul {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  nav li {
-    margin-right: 20px;
-  }
-  
-  nav a {
-    color: #fff;
-  }
-  
-  nav a:hover {
-    color: #ccc;
-  }
-  
-  /* Content styles */
-  
-  .content {
-    padding: 20px;
-  }
-  
-  section {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    margin-top: 0;
-  }
-  
-  /* Workout routine styles */
-  
-  #workout-routine ul {
-    padding: 0;
-    margin: 0;
-  }
-  
-  #workout-routine li {
-    margin-bottom: 20px;
-  }
-  
-  #workout-routine h3 {
-    margin-top: 0;
-  }
-  
-  #workout-routine ul ul {
-    padding-left: 20px;
-  }
-  
-  /* Workout log styles */
-  
-  #workout-log {
-    padding: 20px;
-  }
-  
-  #workout-log form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  #workout-log label {
-    width: 100px;
-    margin-right: 10px;
-  }
-  
-  #workout-log input[type="date"], #workout-log input[type="number"] {
-    width: 100px;
-    padding: 10px;
-    margin-right: 10px;
-  }
-  
-  #workout-log input[type="submit"] {
-    padding: 10px 20px;
-    background-color: #337ab7;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  #workout-log input[type="submit"]:hover {
-    background-color: #23527c;
-  }
-  #nav-panel {
-    background-color: #333;
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #444;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-#nav-panel ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#nav-panel li {
-    margin-right: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #444;
+/* Navigation */
+
+.nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
 }
 
-#nav-panel a {
-    color: #fff;
-    text-decoration: none;
+.nav a {
+  color: #fff;
+  text-decoration: none;
 }
 
-#nav-panel a:hover {
-    color: #ccc;
+.nav a:hover {
+  background-color: #444;
 }
 
-#nav-panel a.active {
-    background-color: #555;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
+/* Forms */
+
+.form {
+  margin: 20px;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form input[type="text"], .form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+.form button[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+/* Admin panel */
+
+.admin-panel {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.admin-panel h2 {
+  margin-top: 0;
+}
+
+.admin-panel table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-panel th, .admin-panel td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.admin-panel th {
+  background-color: #f0f0f0;
+}
+
+/* User dashboard */
+
+.user-dashboard {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.user-dashboard h2 {
+  margin-top: 0;
+}
+
+.user-dashboard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-dashboard li {
+  margin-bottom: 20px;
+}
+
+.user-dashboard li:last-child {
+  margin-bottom: 0;
+}
+
+/* Profile */
+
+.profile {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.profile h2 {
+  margin-top: 0;
+}
+
+.profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 20px;
+}
+
+/* Diet plan and workout plan */
+
+.diet_plan, .workout_plan {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.diet_plan h2, .workout-plan h2 {
+  margin-top: 0;
+}
+
+.diet_plan ul, .workout-plan ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.diet_plan li, .workout-plan li {
+  margin-bottom: 20px;
+}
+
+.diet_plan li:last-child, .workout-plan li:last-child {
+  margin-bottom: 0;
 }

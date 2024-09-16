@@ -105,7 +105,6 @@ def diet_plan():
 def workout():
     user = {'workout_plan': {'exercises': [{'name': 'Bench Press', 'sets': 3, 'reps': 8, 'weight': 100}, {'name': 'Squats', 'sets': 3, 'reps': 10, 'weight': 150}]}}
     return render_template('workout.html', user=user)
-
 @app.route('/nav')
 def nav():
     return render_template('nav.html')
