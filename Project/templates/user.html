@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAT TO FIT</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body background="static/homepage.jpg">
+    <nav class="navbar navbar-expand-lg navbar-light bg-purple-500 mb-4">
+        <a class="navbar-brand" href="{{ url_for('user_dashboard') }}">Fat To Fit</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('user_dashboard') }}">Dashboard <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('diet_plan') }}">Diet Plan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('workout') }}">Workout Plan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mx-auto p-4 max-w-[1400px]">
+        <div class=" flex justify-center">
+            <div class="w-full md:w-1/2 xl:w-1/2 p-4">
+                <!-- Workout plan container -->
+                <div class="bg-white rounded shadow-md p-40" style="background-image: url('static/workout.jpg' ); background-size: cover;">
+                    <link class="text-lg font-bold mb-4 h-full w-full hover: underline" style="" href="{{ url_for('diet_plan') }}"> </href=>Workout Plan</h5>
+                    <p class="text-gray-600">Click to view your workout plan.</p>
+                    
+                </div>
+                <a href="{{ url_for('workout') }}" class="bg-purple-700 hover:bg-blue-700 text-white font-bold py-2 px-40 rounded">View Workout Plan</a>
+            </div>
+            <div class="w-full h-screen md:w-1/2 xl:w-1/2 p-4">
+                <!-- Diet plan container -->
+                <div class="bg-white rounded shadow-md w-full p-40" style="background-image: url('static/diet.jpg'); background-size: cover;" href="{{ url_for('diet_plan') }}" hover:underline>
+                    <h5 class="text-lg font-bold mb-2 h-full w-full">Diet Plan</h5>
+                    <p class="text-gray-600">Click to view your diet plan.</p>
+                </div>
+                <a href="{{ url_for('diet_plan') }}" class="bg-purple-700  bg-center hover:bg-blue-700 text-white font-bold py-2 p-40 rounded">View Diet Plan</a>
+            </div>
+        </div>
+    </div>
+   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

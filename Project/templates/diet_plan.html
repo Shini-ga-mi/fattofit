@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Diet Plan</title><link rel="stylesheet" type="text/css" href="style.css"><meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAT TO FIT</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{{ url_for('user_dashboard') }}">Fitness App</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                  <a class="nav-link" href="{{ url_for('user_dashboard') }}">Dashboard <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('workout') }}">Workout Plan</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+  </nav>
+    <h1>Diet Plan</h1>
+    <p>Daily Calorie Intake: {{ user.diet_plan.calorie_intake }}</p>
+    <p>Macronutrient Breakdown:</p>
+    <ul>
+      <li>Protein: {{ user.diet_plan.protein }}g</li>
+      <li>Carbohydrates: {{ user.diet_plan.carbohydrates }}g</li>
+      <li>Fat: {{ user.diet_plan.fat }}g</li>
+    </ul>
+    <p>Meal Plan:</p>
+    <ul>
+      {% for meal in user.diet_plan.meals %}
+        <li>{{ meal.name }} ({{ meal.calories }} calories)</li>
+      {% endfor %}
+    </ul>
+    
+  </body>
+</html>
