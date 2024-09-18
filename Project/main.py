@@ -30,6 +30,7 @@ def login():
 
     return render_template('login.html')
 
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -37,9 +38,12 @@ def register():
         name = request.form.get('name')
         password = request.form.get('password')
         confirm_password = request.form.get('confirm_password')
+        height = request.form.get('height')
+        weight = request.form.get('weight')
+        gender = request.form.get('gender')
 
         # Check if any fields are empty
-        if not all([username, name, password, confirm_password]):
+        if not all([username, name, password, confirm_password, height, weight, gender]):
             error_message = 'Please fill out all fields'
             return render_template('register.html', error=error_message)
 
@@ -49,7 +53,7 @@ def register():
             return render_template('register.html', error=error_message)
 
         # Create a new user and store the data
-        users[username] = {"name": name, "password": password, "workouts": [], "diets": [], "progress": []}
+        users[username] = {"name": name, "password": password, "workouts": [], "diets": [], "progress": [], "height": height, "weight": weight, "gender": gender}
         return redirect(url_for('login'))
 
     return render_template('register.html')
@@ -93,9 +97,52 @@ def user_dashboard():
 
 @app.route('/profile')
 def profile():
-    user = {'name': 'John Doe', 'email': 'john@example.com', 'profile_picture': 'profile_picture.jpg'}
-    return render_template('profile.html', user=user)
+    username = session.get('username')
+    if username:
+        user = users.get(username)
+        
+        return render_template('profile.html', user=user)
+    else:
+        return redirect(url_for('login'))
+ 
 
+    
+@app.route('/profile/edit', methods=['GET', 'POST'])
+def edit_profile():
+    username = session.get('username')
+    if username:
+        user = users.get(username)
+        if request.method == 'POST':
+            name = request.form.get('name')
+            height = request.form.get('height')
+            weight = request.form.get('weight')
+            gender = request.form.get('gender')
+            goal = request.form.get('goal')
+            target_weight = request.form.get('target_weight')
+            target_date = request.form.get('target_date')
+            current_weight = request.form.get('current_weight')
+            
+            if name:
+                user['name'] = name
+            if height:
+                user['height'] = height
+            if weight:
+                user['weight'] = weight
+            if gender:
+                user['gender'] = gender
+            if goal:
+                user['goal'] = goal
+            if target_weight:
+                user['target_weight'] = target_weight
+            if target_date:
+                user['target_date'] = target_date
+            if current_weight:
+                user['current_weight'] = current_weight
+            
+            return redirect(url_for('profile'))
+        return render_template('edit_profile.html', user=user)
+    else:
+        return redirect(url_for('login'))
 @app.route('/diet_plan')
 def diet_plan():
     user = {'diet_plan': {'calorie_intake': 2000, 'protein': 100, 'carbohydrates': 200, 'fat': 50, 'meals': [{'name': 'Breakfast', 'calories': 500}, {'name': 'Lunch', 'calories': 600}, {'name': 'Dinner', 'calories': 700}]}}

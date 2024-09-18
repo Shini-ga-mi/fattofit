@@ -1,39 +1,293 @@
 <!DOCTYPE html>
-<html class="h-full bg-grey-20">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <title>Welcome to Fat To Fit</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness App - Diet Plan</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        /* Move links to the left */
+        .navbar-nav {
+            display: flex;
+            width: 100%;
+        }
+
+        /* .navbar-nav .nav-link {
+    color: black;
+    
+    margin-right: 15px; 
+    padding-left: 10px;
+}  */
+
+        /* .navbar-nav .nav-link:hover {
+    color: darkblue;
+}  */
+
+        /* Diet card  */
+        .card {
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-body {
+            background-color: white;
+            color: black;
+            padding: 20px;
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 1rem;
+        }
+
+        .row {
+            margin-bottom: 30px;
+        }
+
+        /* Responsive Design for smaller screens */
+        @media (max-width: 768px) {
+            .card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-cover bg-center md:bg-contain lg:bg-cover xl:bg-contain"
-  style="background-image: url('static/front.jpg');">
-  <div class="flex flex-col items-center justify-center h-screen">
-    <header class=" shadow-md flex flex-col items-center justify-center">
-      <h1 class="text-3xl font-sans font-bold text-white">Welcome to Fat To Fit</h1>
-    </header>
-    <main class="container mx-auto p-4 pt-6">
-      <div class="max-w-md mx-auto">
-        <h2 class="text-2xl font-bold text-green-700 mb-4">Get Started</h2>
-        <p class="text-white">Please log in or register to access your account.</p>
-        <p>.</p>
-        <div class="flex flex-wrap justify-center mb-4">
-          <br><br><a href="{{ url_for('login') }}"
-            class="btn bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded flex items-center">
-            <span class="mx-auto">Log In</span>
-          </a>
-          <a href="{{ url_for('register') }}"
-            class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center ml-4">
-            <span class="mx-auto">Register</span>
-          </a>
+<body class="bg-[url('https://example.com/your-background.jpg')] bg-cover bg-center bg-no-repeat bg-fixed text-black">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 px-3 sticky">
+        <a class="navbar-brand" href="{{ url_for('user_dashboard') }}">
+            <img src="/static/logo.png" alt="Fat To Fit" class="h-30 w-40">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('user_dashboard') }}">Dashboard <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+                
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('workout') }}">Workout Plan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+         <!-- Diet 1: Vegan Diet -->
+<div class="col">
+    <div class="card" data-bs-toggle="modal" data-bs-target="#diet1Modal">
+      <img src="https://images.pexels.com/photos/406152/pexels-photo-406152.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Vegan Diet">
+      <div class="card-body">
+        <h5 class="card-title">Vegan Diet</h5>
+        <p class="card-text">Click to see more details about this diet.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Diet 2: Keto Diet -->
+  <div class="col">
+    <div class="card" data-bs-toggle="modal" data-bs-target="#diet2Modal">
+      <img src="https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Keto Diet">
+      <div class="card-body">
+        <h5 class="card-title">Keto Diet</h5>
+        <p class="card-text">Click to see more details about this diet.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Diet 3: Low-Carb Diet -->
+  <div class="col">
+    <div class="card" data-bs-toggle="modal" data-bs-target="#diet3Modal">
+      <img src="https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=400" class="card-img-top" alt="Low-Carb Diet">
+      <div class="card-body">
+        <h5 class="card-title">Low-Carb Diet</h5>
+        <p class="card-text">Click to see more details about this diet.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Diet 4: Intermittent Fasting -->
+  <div class="col">
+    <div class="card" data-bs-toggle="modal" data-bs-target="#diet4Modal">
+      <img src="https://images.squarespace-cdn.com/content/v1/5602c3cce4b0f8716df3f66d/1619068534309-HIK8J3M0J6VJTBUNG0RY/Intermittent+Fasting+image+%281%29.jpg?format=1500w" class="card-img-top" alt="Intermittent Fasting">
+      <div class="card-body">
+        <h5 class="card-title">Intermittent Fasting</h5>
+        <p class="card-text">Click to see more details about this diet.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Diet 5: Paleo Diet -->
+  <div class="col">
+    <div class="card" data-bs-toggle="modal" data-bs-target="#diet5Modal">
+      <img src="https://images.pexels.com/photos/1305063/pexels-photo-1305063.jpeg?auto=compress&cs=tinysrgb&w=400" class="card-img-top" alt="Paleo Diet">
+      <div class="card-body">
+        <h5 class="card-title">Paleo Diet</h5>
+        <p class="card-text">Click to see more details about this diet.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modals -->
+  <!-- Diet 1: Vegan Diet -->
+  <div class="modal fade" id="diet1Modal" tabindex="-1" aria-labelledby="diet1ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="diet1ModalLabel">Vegan Diet</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ">
+          <p>This diet focuses on plant-based foods and excludes all animal products.</p>
+          <ul>
+            <li>Fruits: apples, bananas, berries</li>
+            <li>Vegetables: broccoli, carrots, spinach</li>
+            <li>Legumes: beans, lentils, peas</li>
+            <li>Whole grains: brown rice, quinoa, whole wheat bread</li>
+            <li>Nuts and seeds: almonds, chia seeds, flax seeds</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         </div>
       </div>
-    </main>
+    </div>
   </div>
-</body>
-
-</html>
+  
+  <!-- Diet 2: Keto Diet -->
+  <div class="modal fade" id="diet2Modal" tabindex="-1" aria-labelledby="diet2ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="diet2ModalLabel">Keto Diet</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>This diet focuses on high-fat, low-carbohydrate foods to promote weight loss.</p>
+          <ul>
+            <li>Fats: avocado, coconut oil, olive oil</li>
+            <li>Proteins: chicken, fish, eggs</li>
+            <li>Low-carb vegetables: asparagus, bell peppers, cucumbers</li>
+            <li>Cheese and dairy: full-fat cheese, Greek yogurt</li>
+            <li>Nuts and seeds: almonds, chia seeds, flax seeds</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Diet 3: Low-Carb Diet -->
+  <div class="modal fade" id="diet3Modal" tabindex="-1" aria-labelledby="diet3ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="diet3ModalLabel">Low-Carb Diet</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ">
+          <p>This diet focuses on reducing carbohydrate intake to promote weight loss.</p>
+          <ul>
+            <li>Proteins: chicken, fish, eggs</li>
+            <li>Low-carb vegetables: broccoli, cauliflower, spinach</li>
+            <li>Healthy fats: avocado, olive </li>
+          </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+          <!-- Diet 4: Intermittent Fasting -->
+<div class="modal fade" id="diet4Modal" tabindex="-1" aria-labelledby="diet4ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="diet4ModalLabel">Intermittent Fasting</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ">
+          <p>This diet involves alternating periods of eating and fasting to promote weight loss.</p>
+          <ul>
+            <li>16:8 Method: eat during an 8-hour window, fast for 16 hours</li>
+            <li>5:2 Diet: eat normally for 5 days, restrict calories to 500-600 on the other 2 days</li>
+            <li>Alternate Day Fasting: alternate between days of normal eating and days of calorie restriction</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Diet 5: Paleo Diet -->
+  <div class="modal fade" id="diet5Modal" tabindex="-1" aria-labelledby="diet5ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="diet5ModalLabel">Paleo Diet</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ">
+          <p>This diet focuses on whole, unprocessed foods that were likely consumed by early humans.</p>
+          <ul>
+            <li>Meat: grass-fed beef, wild game, free-range chicken</li>
+            <li>Fish and seafood: wild-caught salmon, shrimp, lobster</li>
+            <li>Fruits and vegetables: apples, bananas, broccoli, carrots</li>
+            <li>Nuts and seeds: almonds, walnuts, chia seeds, flax seeds</li>
+            <li>Healthy fats: avocado, olive oil, coconut oil</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+            
+            <!-- Bootstrap JS -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+            </body>
+            </html>

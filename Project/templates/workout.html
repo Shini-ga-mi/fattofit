@@ -80,33 +80,31 @@
 </head>
 
 <body class="bg-[url('https://example.com/your-background.jpg')] bg-cover bg-center bg-no-repeat bg-fixed text-black">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand px-3" href="#">
-            <img src="../static/lo" alt="Fitness App Logo" style="height: 40px;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 px-3 sticky">
+        <a class="navbar-brand" href="{{ url_for('user_dashboard') }}">
+            <img src="/static/logo.png" alt="Fat To Fit" class="h-30 w-40">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto flex justify-end px-10">
-                <li class="nav-item">
-                    <a class="nav-link text-xl hover:text-blue-900" href="{{ url_for('user_dashboard') }}">Dashboard</a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('user_dashboard') }}">Dashboard <span
+                            class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-xl hover:text-blue-900" href="{{ url_for('profile') }}">Profile</a>
+                    <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
                 </li>
-                <li class="nav-item text-xl hover:text-blue-900">
-                    <a class="nav-link  hover:text-blue-900 " href="{{ url_for('diet_plan') }}">Diet Plan</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('diet_plan') }}">Diet Plan</a>
                 </li>
-                <li class="nav-item text-xl hover:text-blue-900">
-                    <a class="nav-link  hover:text-blue-900" href="{{ url_for('logout') }}">Logout</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
                 </li>
             </ul>
         </div>
-
-
     </nav>
 
     <div class="container">
@@ -122,7 +120,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Workout 2 -->
             <div class="col">
                 <div class="card" data-bs-toggle="modal" data-bs-target="#workout2Modal">
@@ -187,33 +184,31 @@
     </div>
     </div>
 
-
-
-    <!-- Modals for each workout -->
+<!-- Modals for each workout -->
     <!-- Modal 1: Chest & Triceps -->
-<div class="modal fade" id="workout1Modal" tabindex="-1" aria-labelledby="workout1ModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="workout1ModalLabel">Chest & Triceps Workout</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <iframe width="100%" height="315" src="https://youtube.com/embed/hkaHHE0AbXo?si=puUva0oNCkKz0oIk"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                </iframe>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <div class="modal fade" id="workout1Modal" tabindex="-1" aria-labelledby="workout1ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="workout1ModalLabel">Chest & Triceps Workout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe width="100%" height="315" src="https://youtube.com/embed/hkaHHE0AbXo?si=puUva0oNCkKz0oIk"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-    <!-- Modal 2: Back & Biceps -->
+<!-- Modal 2: Back & Biceps -->
 <div class="modal fade" id="workout2Modal" tabindex="-1" aria-labelledby="workout2ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -235,12 +230,12 @@
     </div>
 </div>
 
-    <!-- Modal 3: Legs Workout -->
+<!-- Modal 3: Legs Workout -->
 <div class="modal fade" id="workout3Modal" tabindex="-1" aria-labelledby="workout3ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="workout3ModalLabel">Chest & Triceps Workout</h5>
+                <h5 class="modal-title" id="workout3ModalLabel">Legs Workout</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -257,13 +252,12 @@
     </div>
 </div>
 
-
-    <!-- Modal 4: Shoulder Workout -->
+<!-- Modal 4: Shoulder Workout -->
 <div class="modal fade" id="workout4Modal" tabindex="-1" aria-labelledby="workout4ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="workout4ModalLabel">Chest & Triceps Workout</h5>
+                <h5 class="modal-title" id="workout4ModalLabel">Shoulder Workout</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -280,13 +274,12 @@
     </div>
 </div>
 
-
-    <!-- Modal 5: Abs Workout -->
+<!-- Modal 5: Abs Workout -->
 <div class="modal fade" id="workout5Modal" tabindex="-1" aria-labelledby="workout5ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="workout5ModalLabel">Chest & Triceps Workout</h5>
+                <h5 class="modal-title" id="workout5ModalLabel">Abs Workout</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -303,33 +296,31 @@
     </div>
 </div>
 
-
-
-    <!-- Modal 6: Abs Workout -->
-    <div class="modal fade" id="workout6Modal" tabindex="-1" aria-labelledby="workout6ModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="workout6ModalLabel">Chest & Triceps Workout</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <iframe width="100%" height="315" src="https://youtube.com/embed/GHBVM3P63ds?si=NgIrVa2DyFMTFDeN"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                </div>
+<!-- Modal 6: Glute Workout -->
+<div class="modal fade" id="workout6Modal" tabindex="-1" aria-labelledby="workout6ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="workout6ModalLabel">Glute Workout</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div class="modal-body">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/GHBVM3P63ds" 
+                title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                </iframe>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         </div>
     </div>
+</div>
+</div>
 
+    </div>
     </div>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
