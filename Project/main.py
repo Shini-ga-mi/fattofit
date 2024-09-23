@@ -59,6 +59,7 @@ def register():
     return render_template('register.html')
 
 @app.route('/admin', methods=['GET', 'POST'])
+@app.route('/admin/dashboard', methods=['GET', 'POST'])
 def admin_panel():
     if 'admin' not in session:
         return redirect(url_for('login'))
@@ -85,12 +86,31 @@ def admin_panel():
             return "User not found."
     
     return render_template('admin.html', users=users)
+@app.route('/admin/users')
+def admin_users():
+    if 'admin' not in session:
+        return redirect(url_for('login'))
+    
+    return render_template('admin_users.html', users=users)
+
+@app.route('/admin/workout-plans')
+def admin_workout_plans():
+    if 'admin' not in session:
+        return redirect(url_for('login'))
+    
+    return render_template('admin_workout_plans.html', users=users)
+
+@app.route('/admin/diet-plans')
+def admin_diet_plans():
+    if 'admin' not in session:
+        return redirect(url_for('login'))
+    
+    return render_template('admin_diet_plans.html', users=users)
 
 @app.route('/user')
 def user_dashboard():
     if 'username' not in session:
-        return redirect(url_for('login'))
-
+        return redirect(url_for('login')) 
     username = session['username']
     user_data = users.get(username)
     return render_template('user.html', user=user_data)

@@ -1,39 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Admin Panel</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAT TO FIT - Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h2>Admin Panel</h2>
-    <form method="POST">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <h3>Add Exercise</h3>
-        <label for="exercise">Exercise:</label><br>
-        <input type="text" id="exercise" name="exercise"><br>
-        <label for="sets">Sets:</label><br>
-        <input type="number" id="sets" name="sets"><br>
-        <label for="reps">Reps:</label><br>
-        <input type="number" id="reps" name="reps"><br>
-        <label for="rest_time">Rest Time (secs):</label><br>
-        <input type="number" id="rest_time" name="rest_time"><br><br>
 
-        <h3>Add Diet Plan</h3>
-        <label for="diet">Diet:</label><br>
-        <input type="text" id="diet" name="diet"><br>
-        <label for="calories">Calories:</label><br>
-        <input type="number" id="calories" name="calories"><br><br>
+<body class="bg-[url('https://example.com/your-background.jpg')] bg-cover bg-center bg-no-repeat bg-fixed text-black">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 px-3 sticky">
+        <a class="navbar-brand" href="{{ url_for('admin_panel') }}">
+            <img src="/static/logo.png" alt="Fat To Fit" class="h-30 w-40">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('admin_users') }}">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('admin_workout_plans') }}">Workout Plans</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('admin_diet_plans') }}">Diet Plans</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-        <input type="submit" value="Add Data">
-    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <a href="{{ url_for('admin_users') }}">
+                        <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt="Clickable Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h2 class="card-title text-center fw-bold">Manage Users</h2>
+                        <p class="card-text text-center">View and manage user accounts.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <a href="{{ url_for('admin_workout_plans') }}">
+                        <img src="https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt="Clickable Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h2 class="card-title text-center fw-bold">Manage Workout Plans</h2>
+                        <p class="card-text text-center">Create and manage workout plans for users.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <a href="{{ url_for('admin_diet_plans') }}">
+                        <img src="https://images.pexels.com/photos/3837757/pexels-photo-3837757.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            alt="Clickable Image" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h2 class="card-title text-center fw-bold">Manage Diet Plans</h2>
+                        <p class="card-text text-center">Create and manage diet plans for users.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h3>Current Users</h3>
-    {% for username, data in users.items() %}
-        <h4>{{ username }}</h4>
-        <p>Workouts: {{ data.workouts }}</p>
-        <p>Diet Plan: {{ data.diets }}</p>
-    {% endfor %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
